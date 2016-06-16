@@ -1,3 +1,6 @@
+import Cards
+import Variants
+
 class Player:
     __name = ""
     __Score = 0
