@@ -6,8 +6,12 @@ class Player:
     __Score = 0
     __hand = []
     __handScore = 0
+    __discardCount = 0
     def __init__(this, name):
         this.__name = name
+
+    def getDiscardCount(this):
+        return this.__discardCount
 
     def getName(this):
         return this.__name
@@ -41,14 +45,23 @@ class Player:
             print(str(i)+") " + d.getName())
 
     def discardCard(this, index):
-        return this.getCard(index).discard()
+        if this.getCard(index).discard():
+            this.__discardCount = this.__discardCount + 1
+        else:
+            this.__discardCount = this.__discardCount - 1
 
     def cleanHand(this):
         handCopy = this.__hand[:]
         for c in handCopy:
             if c.isDiscarded():
                 this.__hand.remove(c)
-                
+        this.__discardCount = 0
+
+    def hasSuit(this, suit):
+        for c in this.__hand:
+            if c.getSuit() == suit:
+                return True
+        return False
     
 class Game:
     __discardList = []
@@ -57,13 +70,14 @@ class Game:
     __array = None
     __desk = None
     __idiotsArray = {'name':"Idiot's", 'cards':['*:Idiot', '2:*', '3:*']}
+    __rules = None
     def printScores(this):
         print(this.__player.getName() + ":" + str(this.__player.getScore()))
         print(this.__computer.getName() + ":" + str(this.__computer.getScore()))
         
     def __init__(this, rule):
-        rules = Rules()
-        r = rules.getRule(rule)
+        this.__rules = Rules()
+        r = this.__rules.getRule(rule)
         this.__deck = Deck(r['faces'])
         this.__player = Player(input('Enter your name: '))
         this.__computer = Player('Computer')
@@ -121,16 +135,26 @@ class Game:
 
     def changeHand(this, owner):
         loop = True
+        draw = 0
         while(loop):
             owner.printHand()
+            print("Discarded: " + str(owner.getDiscardCount()))
             index = input("Select Card to Discard (q to continue): #")
 
             if index == 'q':
-                loop = False
+                draw = owner.getDiscardCount()
+                discardRules = this.__discardList
+                if discardRules[draw] == "*":
+                    loop = False
+                else:
+                    if owner.hasSuit(discardRules[draw]):
+                        loop = False
+                    else:
+                        print("You need a " + discardRules[draw] + " to discard " + str(draw) + " cards")
             elif this.isInt(index) and int(index) < 4:
                 owner.discardCard(int(index))
         owner.cleanHand()
-        newCards = this.__deck.draw(4-len(owner.getHand()))
+        newCards = this.__deck.draw(draw)
         for c in newCards:
             owner.AddCard(c)
 
@@ -157,7 +181,7 @@ class Game:
             score = this.getHandValue(playerhand)
 
         if score > 46:
-            score = 46 - score
+            score = 46 - score #if over 46 decrease score by difference
         elif score > 23:
             score = score - 23
         return score
