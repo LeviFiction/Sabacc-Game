@@ -97,6 +97,7 @@ class Game:
                     this.declareWinner(1, this.__player.getHand(), this.__computer.getHand())
                 elif computerhand > playerhand:
                     #computer wins
+                    this.declareWinner(2, this.__player.getHand(), this.__computer.getHand())
                     pass
                 else:
                     #Draw
@@ -108,33 +109,30 @@ class Game:
         #Add score to final score for each player
         
     def discardAndDraw(this, playerid):
+        print()
         if playerid == 1:
-            #Loop until user quits and discard pile is verified
-            #Start Loop
-            #Print Hand
-            #Request index # or letter q to finish
-            #If letter q, check if discard pile is validation
-            #If a number, check if index is valid, a repeated index will toggle the discard label
-            #If index is valid, discard card
-            #Loop
-            loop = True
-            while(loop):
-                this.__player.printHand()
-                index = input("Select Card to Discard (q to continue): #")
-
-                if index == 'q':
-                    loop = False
-                elif this.isInt(index) and int(index) < 4:
-                    this.__player.discardCard(int(index))
-            this.__player.cleanHand()
-            newCards = this.__deck.draw(4-len(this.__player.getHand()))
-            for c in newCards:
-                this.__player.AddCard(c)
+            print("Player's Turn")
+            this.changeHand(this.__player)
             this.__player.printHand()
-
         else:
-            #No AI for the computer at this point
-            return
+            print("Computer's Turn")
+            this.changeHand(this.__computer)
+            this.__computer.printHand()
+
+    def changeHand(this, owner):
+        loop = True
+        while(loop):
+            owner.printHand()
+            index = input("Select Card to Discard (q to continue): #")
+
+            if index == 'q':
+                loop = False
+            elif this.isInt(index) and int(index) < 4:
+                owner.discardCard(int(index))
+        owner.cleanHand()
+        newCards = this.__deck.draw(4-len(owner.getHand()))
+        for c in newCards:
+            owner.AddCard(c)
 
     def isInt(this, v):
         try:     i = int(v)
@@ -142,6 +140,10 @@ class Game:
         return True
 
     def declareWinner(this, playerid, hand1, hand2):
+        if playerid == 1:
+            print("Player won")
+        else:
+            print("Computer won")
         pass
 
     def isArray(this, hand, arrayDef):
@@ -180,7 +182,6 @@ while(choice != "n"):
 #Loop until user says "N"
     print("Current Score")
     g.printScores()
-    print()
     g.play()
     choice = input("Would you like to play another round? (Y/N)").lower()
 #end loop
