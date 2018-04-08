@@ -1,5 +1,5 @@
-import Cards
-import Variants
+from Cards import *
+from Variants import Rules
 
 class Player:
     __name = ""
@@ -22,7 +22,7 @@ class Player:
     def setHand(this, hand):
         this.__hand = hand
     
-    def getHand(this, hand):
+    def getHand(this):
         return this.__hand
     
     def getCard(this, index):
@@ -49,14 +49,14 @@ class Game:
     __desk = None
     __idiotsArray = {'name':"Idiot's", 'cards':['*:Idiot', '2:*', '3:*']}
     def printScores(this):
-        Print(this.__player.getName + ":" + str(this.__player.getScore()))
-        Print(this.__computer.getName + ":" + str(this.__computer.getScore()))
+        print(this.__player.getName() + ":" + str(this.__player.getScore()))
+        print(this.__computer.getName() + ":" + str(this.__computer.getScore()))
         
     def __init__(this, rule):
         rules = Rules()
         r = rules.getRule(rule)
         this.__deck = Deck(r['faces'])
-        this.__player = Player(input('Enter your nae: '))
+        this.__player = Player(input('Enter your name: '))
         this.__computer = Player('Computer')
         this.__discardList = r['discardList']
         this.__array = r['array']
@@ -77,20 +77,21 @@ class Game:
             this.declareWinner(2, this.__player.getHand(), this.__commputer.getHand())
         elif computerrank == playerrank:
             if playerrank == 1:
-                playerhand = getHandValue(this.__player.getHand())
-                computerhand = getHandValue(this.__computer.getHand())
+                playerhand = this.getHandValue(this.__player.getHand())
+                computerhand = this.getHandValue(this.__computer.getHand())
                 if playerhand > 23:
                     playerhand = playerhand - 23
                 if computerhand > 23:
                     computerhand = computerhand - 23
-                    
                 if  playerhand > computerhand:
                     #player wins
                     this.declareWinner(1, this.__player.getHand(), this.__commputer.getHand())
                 elif computerhand > playerhand:
                     #computer wins
+                    pass
                 else:
                     #Draw
+                    pass
         #If no winner, calculate score
         #If score > 23 then subtrac 23
         #Compare final scores, largest wins.
@@ -107,23 +108,23 @@ class Game:
             #If a number, check if index is valid, a repeated index will toggle the discard label
             #If index is valid, discard card
             #Loop
-
+            pass
         else:
             #No AI for the computer at this point
             return
     
     def isArray(this, hand, arrayDef):
-    
+        pass
     def rankHand(this, hand):
-        handvalue = getHandValue(hand)
+        handvalue = this.getHandValue(hand)
         handrank = 0
         if handvalue == 23:
             handrank = 5
         elif handvalue == 46:
             handrank = 4
-        elif isArray(hand, this.__idiotsArray):
+        elif this.isArray(hand, this.__idiotsArray):
             handrank = 3
-        elif isArray(hand, this.__array):
+        elif this.isArray(hand, this.__array):
             handrank = 2
         elif handvalue > 46:
             handrank = 0
@@ -133,8 +134,10 @@ class Game:
         return handrank
     
     def getHandValue(this, hand):
+        handvalue = 0
         for c in hand:
             handvalue = handvalue + c.getValue()
+        return handvalue
             
 g = Game('Standard')
 

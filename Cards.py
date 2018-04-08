@@ -46,7 +46,7 @@ class Card:
         return this.__discarded
         
     def discard(this, index):
-        this.__discarded = !this.__discarded
+        this.__discarded = not this.__discarded
         
 class Deck():
     __faces = {}
@@ -60,8 +60,8 @@ class Deck():
         list1 = []
         list2 = []
         for i in range(4):
-            list1.append(this.draw(1))
-            list2.append(this.draw(1))
+            list1.append(this.draw(1)[0])
+            list2.append(this.draw(1)[0])
         if len(this.__cards) < 16:
             this.shuffle()
         
@@ -81,7 +81,7 @@ class Deck():
             for suit in suits:
                 for i in range(16):
                     this.__cards.append(Card(suit, i))
-            for face,value in this.__faces.iteritems():
+            for face,value in this.__faces.items():
                 this.__cards.append(Card(face,value))
                 this.__cards.append(Card(face,value))
             this.shuffle()
