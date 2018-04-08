@@ -34,7 +34,7 @@ class Card:
             
         if this.__discarded:
             name = "(discarded) " + name
-        return name
+        return name + "(" + str(this.__value) + ")"
             
     def getValue(this):
         return this.__value

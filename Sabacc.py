@@ -144,7 +144,24 @@ class Game:
             print("Player won")
         else:
             print("Computer won")
-        pass
+        playerscore = this.figureScore(hand1)
+        computerscore = this.figureScore(hand2)
+        this.__player.setScore(this.__player.getScore() + playerscore)
+        this.__computer.setScore(this.__computer.getScore() + computerscore)
+
+    def figureScore(this, playerhand):
+        score = 0
+        if this.isArray(playerhand, this.__idiotsArray) or this.isArray(playerhand, this.__array):
+            score = 23
+        else:
+            score = this.getHandValue(playerhand)
+
+        if score > 46:
+            score = 46 - score
+        elif score > 23:
+            score = score - 23
+        return score
+        
 
     def isArray(this, hand, arrayDef):
         pass
@@ -185,3 +202,7 @@ while(choice != "n"):
     g.play()
     choice = input("Would you like to play another round? (Y/N)").lower()
 #end loop
+print()
+print("Final Scores")
+print()
+g.printScores()
