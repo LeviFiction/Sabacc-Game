@@ -84,9 +84,9 @@ class Deck():
     def __init__(this,faces):
             this.__faces = faces
             suits = ['Staves', 'Sabers', 'Flasks', 'Coins']
-            ranked = {'Commander':12, 'Mistress':13, 'Master':14, 'Ace':15}
+            #ranked = {'Commander':12, 'Mistress':13, 'Master':14, 'Ace':15}
             for suit in suits:
-                for i in range(16):
+                for i in range(15):
                     this.__cards.append(Card(suit, i+1))
             for face,value in this.__faces.items():
                 this.__cards.append(Card(face,value))

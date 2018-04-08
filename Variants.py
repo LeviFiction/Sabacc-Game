@@ -39,7 +39,7 @@ class Rules:
                               'Smuggler':5, 
                               'Bounty Hunter':9
                              },
-                    'discardList':{0,'*', 1:'*', 2:'*', 3:'*'},
+                    'discardList':{0:'*', 1:'*', 2:'*', 3:'*'},
                     'array':{'name':'Force', 'cards':['*:Jedi Knight', '*:Jedi Knight', '15:*']}
             }
         elif r == "new republic":
@@ -65,7 +65,7 @@ class Rules:
                               'Smuggler':7, 
                               'Bounty Hunter':3
                              },
-                    'discardList': 0:'*', 2:'*',
+                    'discardList':{ 0:'*', 2:'*'},
                     'array':{'name':"Sith", 'cards':['*:Lord of the Sith', '*:Commander', '15:*']}
             }
         elif r == "cloud city casino":
