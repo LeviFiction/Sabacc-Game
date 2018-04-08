@@ -14,7 +14,7 @@
 #suit can be a wild card * = any suit, f = any face
 #suit can also be a specific suit or face name
 class Rules:
-    def getRule(this, rule = "default"):
+    def getRule(this, rule = "Standard"):
         r = rule.lower()
         if r == "old republic":
             return {'faces': {'Idiot':0,
@@ -27,7 +27,7 @@ class Rules:
                               'Bounty Hunter':9
                              },
                     'discardList': {0:'*', 1:'*', 2:'*', 3:'Jedi Master',4:'Jedi Master'},
-                    'array':{'name':"Jedi's", 'cards':['*:Jedi Knight', '*:Jedi Master', '#:Saber']}
+                    'array':{'name':"Jedi's", 'cards':['*:Jedi Knight', '*:Jedi Master', '#:Sabers']}
             }
         elif r == "rebel alliance":
             return {'faces': {'Idiot':0,
@@ -66,7 +66,7 @@ class Rules:
                               'Bounty Hunter':3
                              },
                     'discardList':{ 0:'*', 2:'*'},
-                    'array':{'name':"Sith", 'cards':['*:Lord of the Sith', '*:Commander', '15:*']}
+                    'array':{'name':"Sith", 'cards':['*:Lord of the Sith', '12:*', '15:*']}
             }
         elif r == "cloud city casino":
             return {'faces': {'Idiot':0,
@@ -92,7 +92,7 @@ class Rules:
                               'Bounty Hunter':5
                              },
                     'discardList':{0:'*', 1:'*', 4:'Bounty Hunter', 4:'Smuggler'},
-                    'array':{'name':'Force', 'cards':['*:Smuggler', '*:Bounty Hunter', '#:Coin']}
+                    'array':{'name':'Force', 'cards':['*:Smuggler', '*:Bounty Hunter', '#:Coins']}
             }        
         elif r == "corellian":
             return {'faces': {'Idiot':0,
@@ -105,7 +105,7 @@ class Rules:
                               'Bounty Hunter':3
                              },
                     'discardList':{0:'*', 2:'*', 3:'*', 4:'*'},
-                    'array':{'name':"Smuggler's", 'cards':['*:Smuggler', '*:Smugler', '#:Coin']}
+                    'array':{'name':"Smuggler's", 'cards':['*:Smuggler', '*:Smugler', '#:Coins']}
             }        
         elif r == "corporate sector":
             return {'faces': {'Idiot':0,
@@ -118,7 +118,7 @@ class Rules:
                               'Bounty Hunter':3
                              },
                     'discardList':{0:'*', 3:'*'},
-                    'array':{'name':"Hunter's", 'cards':['*:Bounty Hunter', '*:Bounty Hunter', '#:Coin']}
+                    'array':{'name':"Hunter's", 'cards':['*:Bounty Hunter', '*:Bounty Hunter', '#:Coins']}
             }        
         elif r == "crseih station":
             return {'faces': {'Idiot':0,
@@ -131,7 +131,7 @@ class Rules:
                               'Bounty Hunter':6
                              },
                     'discardList':{0:'*', 1:'*',2:'*'},
-                    'array':{'name':'Force', 'cards':['*:Flask', '*:Flask', '*:Flask', '*:Flask']}
+                    'array':{'name':'Force', 'cards':['*:Flasks', '*:Flasks', '*:Flasks', '*:Flasks']}
             }        
         else:
             return {'faces': {'Idiot':0,

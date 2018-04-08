@@ -71,6 +71,12 @@ class Game:
     __desk = None
     __idiotsArray = {'name':"Idiot's", 'cards':['*:Idiot', '2:*', '3:*']}
     __rules = None
+    def getArray(this,type=0):
+        if type == 0:
+            return this.__idiotsArray
+        else:
+            return this.__array
+
     def printScores(this):
         print(this.__player.getName() + ":" + str(this.__player.getScore()))
         print(this.__computer.getName() + ":" + str(this.__computer.getScore()))
@@ -188,7 +194,59 @@ class Game:
         
 
     def isArray(this, hand, arrayDef):
-        pass
+        ###################
+        #Array List format
+        ###################
+        #value:suit
+        #Value can be a wild card # = any number, r = any face, * = any value
+        #Value can also be a specific value 1 - 15
+        #suit can be a wild card * = any suit, f = any face
+        #suit can also be a specific suit or face name
+        #I'm using strings instead of dicts as they will share keys
+        matchList = []
+        arrayDef = arrayDef['cards']
+        for j in arrayDef:
+            value,suit = j.split(':')
+            for i,c in enumerate(hand):
+                print("Checking: " +  str(c) + " against " + str(j) )
+                if this.compareValues(value, c.getValue()): 
+                    if this.compareSuits(suit, c.getSuit()):
+                        if not i in matchList:
+                            matchList.append(i)
+                        else:
+                            print(str(i) + " was already in list")
+                    else:
+                        print(suit + " did not match " + c.getSuit())
+                else:
+                    print(str(value) + " did not match " + str(c.getValue()))
+
+        return len(matchList) >= len(arrayDef)
+
+    def compareValues(this, value1, value2):
+        if this.isInt(value1): value1 = int(value1)
+        if value1 == "*":
+            return True
+        elif value1 == "#":
+            return True
+        else:
+            print(value1, value2)
+            print(type(value1), type(value2))
+            if value1 == value2:
+                print ("Yes they do match")
+                return True
+        return False
+
+    def compareSuits(this, suit1, suit2):
+        if suit1 == "*":
+            if suit2 in ['Staves', 'Sabers', 'Flasks', 'Coins']:
+                return True
+        elif suit1 == "f":
+            if suit2 in ['Idiot', 'Rancor','Jedi Knight','Jedi Master','Dark Jedi', 'Lord of the Sith', 'Smuggler', 'Bounty Hunter']:
+                return True
+        else:
+            if suit1 == suit2:
+                return True
+        return False
 
     def rankHand(this, hand):
         handvalue = this.getHandValue(hand)
@@ -214,8 +272,8 @@ class Game:
             handvalue = handvalue + c.getValue()
         return handvalue
             
-g = Game('Standard')
-
+#g = Game('Standard')
+g = Game('Old Republic')
 print("Welcome to Sabacc.  The Poker game of the future")
 print()
 choice = "Y"
