@@ -48,12 +48,18 @@ class Card:
     def discard(this):
         this.__discarded = not this.__discarded
         return this.__discarded
+
+    def __str__(this):
+        return this.getName()
         
 class Deck():
     __faces = {}
     __cards = []
     __discardPile = []
     
+    def discard(this, card):
+        this.__discardPile.append(card)
+
     def shuffle(this):
         random.shuffle(this.__cards)
     

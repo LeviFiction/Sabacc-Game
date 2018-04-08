@@ -42,6 +42,13 @@ class Player:
 
     def discardCard(this, index):
         return this.getCard(index).discard()
+
+    def cleanHand(this):
+        handCopy = this.__hand[:]
+        for c in handCopy:
+            if c.isDiscarded():
+                this.__hand.remove(c)
+                
     
 class Game:
     __discardList = []
@@ -110,24 +117,25 @@ class Game:
             #If a number, check if index is valid, a repeated index will toggle the discard label
             #If index is valid, discard card
             #Loop
-            test = True
-            while(test):
+            loop = True
+            while(loop):
                 this.__player.printHand()
-                index = input("Select Car to Discard: #")
+                index = input("Select Card to Discard (q to continue): #")
 
                 if index == 'q':
-                    test = False
-                elif this.isInt(index) and int(index) in range(len(this.__player.getHand())):
-                    d = this.__player.discardCard(int(index))
-                    if d:
-                        this.__discardList.append(int(index))
-                    else:
-                        this.__discardList.remove(int(index))
-            pass
+                    loop = False
+                elif this.isInt(index) and int(index) < 4:
+                    this.__player.discardCard(int(index))
+            this.__player.cleanHand()
+            newCards = this.__deck.draw(4-len(this.__player.getHand()))
+            for c in newCards:
+                this.__player.AddCard(c)
+            this.__player.printHand()
+
         else:
             #No AI for the computer at this point
             return
-            
+
     def isInt(this, v):
         try:     i = int(v)
         except:  return False
