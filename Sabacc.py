@@ -6,7 +6,6 @@ class Player:
     __Score = 0
     __hand = []
     __handScore = 0
-    
     def __init__(this, name):
         this.__name = name
 
@@ -40,6 +39,9 @@ class Player:
     def printHand(this):
         for i,d in enumerate(this.__hand):
             print(str(i)+") " + d.getName())
+
+    def discardCard(this, index):
+        return this.getCard(index).discard()
     
 class Game:
     __discardList = []
@@ -71,10 +73,10 @@ class Game:
         computerrank = this.rankHand(this.__computer.getHand())
         if playerrank > computerrank:
             #Player wins
-            this.declareWinner(1, this.__player.getHand(), this.__commputer.getHand())
+            this.declareWinner(1, this.__player.getHand(), this.__computer.getHand())
         elif computerrank > playerrank:
             #Computer wins
-            this.declareWinner(2, this.__player.getHand(), this.__commputer.getHand())
+            this.declareWinner(2, this.__player.getHand(), this.__computer.getHand())
         elif computerrank == playerrank:
             if playerrank == 1:
                 playerhand = this.getHandValue(this.__player.getHand())
@@ -85,7 +87,7 @@ class Game:
                     computerhand = computerhand - 23
                 if  playerhand > computerhand:
                     #player wins
-                    this.declareWinner(1, this.__player.getHand(), this.__commputer.getHand())
+                    this.declareWinner(1, this.__player.getHand(), this.__computer.getHand())
                 elif computerhand > playerhand:
                     #computer wins
                     pass
@@ -108,13 +110,35 @@ class Game:
             #If a number, check if index is valid, a repeated index will toggle the discard label
             #If index is valid, discard card
             #Loop
+            test = True
+            while(test):
+                this.__player.printHand()
+                index = input("Select Car to Discard: #")
+
+                if index == 'q':
+                    test = False
+                elif this.isInt(index) and int(index) in range(len(this.__player.getHand())):
+                    d = this.__player.discardCard(int(index))
+                    if d:
+                        this.__discardList.append(int(index))
+                    else:
+                        this.__discardList.remove(int(index))
             pass
         else:
             #No AI for the computer at this point
             return
-    
+            
+    def isInt(this, v):
+        try:     i = int(v)
+        except:  return False
+        return True
+
+    def declareWinner(this, playerid, hand1, hand2):
+        pass
+
     def isArray(this, hand, arrayDef):
         pass
+
     def rankHand(this, hand):
         handvalue = this.getHandValue(hand)
         handrank = 0
@@ -143,10 +167,12 @@ g = Game('Standard')
 
 print("Welcome to Sabacc.  The Poker game of the future")
 print()
-#Loop until use says "N"
-print("Current Score")
-g.printScores()
-choice = input("Would you like to play a round? (Y/N)")
-print()
-g.play()
+choice = "Y"
+while(choice != "n"):
+#Loop until user says "N"
+    print("Current Score")
+    g.printScores()
+    print()
+    g.play()
+    choice = input("Would you like to play another round? (Y/N)").lower()
 #end loop

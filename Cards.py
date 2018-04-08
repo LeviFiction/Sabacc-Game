@@ -45,8 +45,9 @@ class Card:
     def isDiscarded(this):
         return this.__discarded
         
-    def discard(this, index):
+    def discard(this):
         this.__discarded = not this.__discarded
+        return this.__discarded
         
 class Deck():
     __faces = {}
@@ -80,7 +81,7 @@ class Deck():
             ranked = {'Commander':12, 'Mistress':13, 'Master':14, 'Ace':15}
             for suit in suits:
                 for i in range(16):
-                    this.__cards.append(Card(suit, i))
+                    this.__cards.append(Card(suit, i+1))
             for face,value in this.__faces.items():
                 this.__cards.append(Card(face,value))
                 this.__cards.append(Card(face,value))
