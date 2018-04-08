@@ -208,17 +208,10 @@ class Game:
         for j in arrayDef:
             value,suit = j.split(':')
             for i,c in enumerate(hand):
-                print("Checking: " +  str(c) + " against " + str(j) )
                 if this.compareValues(value, c.getValue()): 
                     if this.compareSuits(suit, c.getSuit()):
                         if not i in matchList:
                             matchList.append(i)
-                        else:
-                            print(str(i) + " was already in list")
-                    else:
-                        print(suit + " did not match " + c.getSuit())
-                else:
-                    print(str(value) + " did not match " + str(c.getValue()))
 
         return len(matchList) >= len(arrayDef)
 
@@ -229,10 +222,7 @@ class Game:
         elif value1 == "#":
             return True
         else:
-            print(value1, value2)
-            print(type(value1), type(value2))
             if value1 == value2:
-                print ("Yes they do match")
                 return True
         return False
 
