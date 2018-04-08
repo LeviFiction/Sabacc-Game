@@ -92,4 +92,3 @@ class Deck():
                 this.__cards.append(Card(face,value))
                 this.__cards.append(Card(face,value))
             this.shuffle()
-            
