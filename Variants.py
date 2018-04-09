@@ -14,6 +14,8 @@
 #suit can be a wild card * = any suit, f = any face
 #suit can also be a specific suit or face name
 class Rules:
+    def getRuleNames(this):
+        return ["Standard", "Old Republic", "New Republic", "Imperial", "Cloud City Casino", "Mos Eisley", "Corellian", "Corporate Sector", "Crseih Station"]
     def getRule(this, rule = "Standard"):
         r = rule.lower()
         if r == "old republic":

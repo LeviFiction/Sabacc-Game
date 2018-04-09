@@ -150,13 +150,19 @@ class Game:
             if index == 'q':
                 draw = owner.getDiscardCount()
                 discardRules = this.__discardList
-                if discardRules[draw] == "*":
-                    loop = False
-                else:
-                    if owner.hasSuit(discardRules[draw]):
+                if draw in discardRules.keys():
+                    if discardRules[draw] == "*":
                         loop = False
                     else:
-                        print("You need a " + discardRules[draw] + " to discard " + str(draw) + " cards")
+                        if owner.hasSuit(discardRules[draw]):
+                            loop = False
+                        else:
+                            print("You need a " + discardRules[draw] + " to discard " + str(draw) + " cards")
+                else:
+                    message = "You can only discard "
+                    for x in discardRules.keys():
+                        message = message + str(x) + ", "
+                    print(message + " cards using the current rules")
             elif this.isInt(index) and int(index) < 4:
                 owner.discardCard(int(index))
         owner.cleanHand()
@@ -261,9 +267,17 @@ class Game:
         for c in hand:
             handvalue = handvalue + c.getValue()
         return handvalue
-            
-#g = Game('Standard')
-g = Game('Old Republic')
+r = Rules().getRuleNames()
+for i,rule in enumerate(r):
+    print(str(i+1) + ") " + rule)
+ruleSelection = input("Select a rule to play Sabacc: " )
+if ruleSelection.isdigit():
+    ruleSelection = int(ruleSelection) - 1
+else:
+    ruleSelection = 0 
+
+g = Game(r[ruleSelection])
+#g = Game('Old Republic')
 print("Welcome to Sabacc.  The Poker game of the future")
 print()
 choice = "Y"
