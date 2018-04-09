@@ -1,5 +1,38 @@
 from Cards import *
 from Variants import Rules
+import os
+
+def clear():
+    os.system('cls')
+
+def main():
+    clear()
+    print("Welcome to Sabacc.  The Poker game of the future")
+    print()
+    r = Rules().getRuleNames()
+    for i,rule in enumerate(r):
+        print(str(i+1) + ") " + rule)
+    ruleSelection = input("Select a rule to play Sabacc: " )
+    if ruleSelection.isdigit():
+        ruleSelection = int(ruleSelection) - 1
+    else:
+        ruleSelection = 0 
+    print("You're playing by " + r[ruleSelection] + " rules")
+    g = Game(r[ruleSelection])
+    choice = "Y"
+    while(choice != "n"):
+    #Loop until user says "N"
+        clear()
+        print("Current Score")
+        g.printScores()
+        g.play()
+        choice = input("Would you like to play another round? (Y/N)").lower()
+    #end loop
+    print()
+    print("Final Scores")
+    print()
+    g.printScores()
+
 
 class Player:
     __name = ""
@@ -95,7 +128,9 @@ class Game:
         this.__player.setHand(ph)
         this.__computer.setHand(ch)
         this.discardAndDraw(1)  #player
+        clear()
         this.discardAndDraw(2)  #computer
+        clear()
         playerrank = this.rankHand(this.__player.getHand())
         computerrank = this.rankHand(this.__computer.getHand())
         if playerrank > computerrank:
@@ -118,10 +153,13 @@ class Game:
                 elif computerhand > playerhand:
                     #computer wins
                     this.declareWinner(2, this.__player.getHand(), this.__computer.getHand())
-                    pass
                 else:
-                    #Draw
-                    pass
+                    this.declareWinner(3, this.__player.getHand(), this.__comptuer.getHand())
+        print()
+        print("Scores: ")
+        print()
+        this.printScores()
+        print()
         #If no winner, calculate score
         #If score > 23 then subtrac 23
         #Compare final scores, largest wins.
@@ -178,8 +216,12 @@ class Game:
     def declareWinner(this, playerid, hand1, hand2):
         if playerid == 1:
             print("Player won")
-        else:
+            print("By " + this.rankHandMessage(hand1))
+        elif playerid == 2:
             print("Computer won")
+            print("By " + this.rankHandMessage(hand2))
+        else:
+            print("It's a DRAW!")
         playerscore = this.figureScore(hand1)
         computerscore = this.figureScore(hand2)
         this.__player.setScore(this.__player.getScore() + playerscore)
@@ -261,34 +303,27 @@ class Game:
             handrank = 1
             
         return handrank
-    
+
+    def rankHandMessage(this,hand):
+        handrank = this.rankHand(hand)
+        if handrank == 5:
+            return "Pure Sabacc"
+        elif handrank == 4:
+            return "Sabacc"
+        elif handrank == 3:
+            return "Idiot's Array"
+        elif handrank == 2:
+            return this.__array['name'] + " array"
+        elif handrank == 0:
+            return "Opponent got over 46 points"
+        else:
+            return "Highest score"
+
     def getHandValue(this, hand):
         handvalue = 0
         for c in hand:
             handvalue = handvalue + c.getValue()
         return handvalue
-r = Rules().getRuleNames()
-for i,rule in enumerate(r):
-    print(str(i+1) + ") " + rule)
-ruleSelection = input("Select a rule to play Sabacc: " )
-if ruleSelection.isdigit():
-    ruleSelection = int(ruleSelection) - 1
-else:
-    ruleSelection = 0 
 
-g = Game(r[ruleSelection])
-#g = Game('Old Republic')
-print("Welcome to Sabacc.  The Poker game of the future")
-print()
-choice = "Y"
-while(choice != "n"):
-#Loop until user says "N"
-    print("Current Score")
-    g.printScores()
-    g.play()
-    choice = input("Would you like to play another round? (Y/N)").lower()
-#end loop
-print()
-print("Final Scores")
-print()
-g.printScores()
+if __name__ == "__main__":
+    main()
