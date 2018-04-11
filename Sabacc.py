@@ -154,7 +154,7 @@ class Game:
                     #computer wins
                     this.declareWinner(2, this.__player.getHand(), this.__computer.getHand())
                 else:
-                    this.declareWinner(3, this.__player.getHand(), this.__comptuer.getHand())
+                    this.declareWinner(3, this.__player.getHand(), this.__computer.getHand())
         print()
         print("Scores: ")
         print()
