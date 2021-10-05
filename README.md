@@ -59,85 +59,85 @@ The standard rules never change no matter what version of the game is being play
 
 ### Old Republic Rules
 These rules will make the Jedi Knight and Jedi Master cards stronger.  You can discard up to two cards, and up to four if you have a Jeddi Master in your hand.  The combination of cards to have is a Jedi Knight, a Jedi Master, and any number Saber.  This is called a Jedi’s Array.  Face card values are listed below.
-•	Rancor=9
-•	Jedi Knight=3
-•	Jedi Master=3
-•	Dark Jedi=-14
-•	Lord of the Sith=10
-•	Smuggler=10
-•	Bounty Hunter=9
+* Rancor=9
+*	Jedi Knight=3
+*	Jedi Master=3
+*	Dark Jedi=-14
+*	Lord of the Sith=10
+*	Smuggler=10
+*	Bounty Hunter=9
 ### Rebel Alliance Rules
 These rules will make the Jedi Knight and Jedi Master cars stronger.  You may discard no more than three cards.  The combination of cards to have is both Jedi Knights, and an ace.  This is called a Force Array.  Face card values are listed below.
-•	Rancor=7
-•	Jedi Knight=3
-•	Jedi Master=4
-•	Dark Jedi=12
-•	Lord of the Sith=-10
-•	Smuggler=5
-•	Bounty Hunter=9
+*	Rancor=7
+*	Jedi Knight=3
+*	Jedi Master=4
+*	Dark Jedi=12
+*	Lord of the Sith=-10
+*	Smuggler=5
+*	Bounty Hunter=9
 ### New Republic Rules
 These rules will make the Jedi Knight, Jedi Master, and Smuggler cards stronger.  You have a choice of discarding one or three cards, and you may not discard any other number of cards besides one and three.   The combination of cards to have is a Jedi Knight, a Jedi Master, and a Smuggler.  This is called a Republic Array.  Face card values are listed below.
-•	Rancor=8
-•	Jedi Knight=4
-•	Jedi Master=3
-•	Dark jedi=12
-•	Lord of the Sith=-11
-•	Smuggler=4
-•	Bounty Hunter=10
+*	Rancor=8
+*	Jedi Knight=4
+*	Jedi Master=3
+*	Dark jedi=12
+*	Lord of the Sith=-11
+*	Smuggler=4
+*	Bounty Hunter=10
 ### Imperial Rules
 These rules will make the Bounty Hunter, Dark jedi, and Lord of the Sith cards stronger.  You may discard no more or less than two cards.  The combination of cards to have is a Lord of the Sith, a Commander, and an Ace.  This is called a Sith Array.  Face card values are listed below.
-•	Rancor=7
-•	Jedi Knight=15
-•	Jedi master=-9
-•	Dark Jedi=3
-•	Lord of the Sith=4
-•	Smuggler=7
-•	Bounty Hunter=3
+*	Rancor=7
+*	Jedi Knight=15
+*	Jedi master=-9
+*	Dark Jedi=3
+*	Lord of the Sith=4
+*	Smuggler=7
+*	Bounty Hunter=3
 ### Cloud City Casino Rules
 Using these rules, you can discard two or four cards.  The combination of cards to have is both Smugglers, and a Jedi Knight.  This is called a Partnership Array.  Face card values are listed below.
-•	Rancor=7
-•	Jedi Knight=4
-•	Jedi Master=6
-•	Dark Jedi=9
-•	Lord of the Sith=-8
-•	Smuggler=5
-•	Bounty Hunter=7
+*	Rancor=7
+*	Jedi Knight=4
+*	Jedi Master=6
+*	Dark Jedi=9
+*	Lord of the Sith=-8
+*	Smuggler=5
+*	Bounty Hunter=7
 ### Mos Eisley Rules
 Using these rules, you may discard one card, or up to our if you have a Bounty Hunter or Smuggler in your hand.  The combination of cards to have is a Smuggler, a Bounty Hunter, and any numbered Coin.  This is called a Criminal’s Array.  Face card values are listed below.
-•	Rancor=5
-•	Jedi Knight=7
-•	Jedi Master=8
-•	Dark Jedi=-11
-•	Lord of the Sith = 10
-•	Smuggler=6
-•	Bounty Hunter=5
+*	Rancor=5
+*	Jedi Knight=7
+*	Jedi Master=8
+*	Dark Jedi=-11
+*	Lord of the Sith = 10
+*	Smuggler=6
+*	Bounty Hunter=5
 ### Corellian Rules
 These rules will make the Bounty Hunter, Rancor, and Smuggler cards stronger.  You may discard no less than two cards.  The combination of cards to have is both Smugglers, and any numbered Coin.  This is called a Smuggler’s Array.  Face card values are listed below.
-•	Rancor=4
-•	Jedi Knight=10
-•	Jedi Master=-13
-•	Dark Jedi=11
-•	Lord of the Sith=11
-•	Smuggler=4
-•	Bounty Hunter=3
+*	Rancor=4
+*	Jedi Knight=10
+*	Jedi Master=-13
+*	Dark Jedi=11
+*	Lord of the Sith=11
+*	Smuggler=4
+*	Bounty Hunter=3
 ### Corporate Sector Rules
 Use these rules, you may discard three cards, no more or less than three.  The combination of cards to have is both Bounty Hunters, and any numbered Coin.  This is called a Hunter’s Array.  Face card values are listed below.
-•	Rancor=5
-•	Jedi Knight=-7
-•	Jedi Master=8
-•	Dark Jedi=7
-•	Lord of the Sith=8
-•	Smuggler=6
-•	Bounty Hunter=3
+*	Rancor=5
+*	Jedi Knight=-7
+*	Jedi Master=8
+*	Dark Jedi=7
+*	Lord of the Sith=8
+*	Smuggler=6
+*	Bounty Hunter=3
 ### Crseih Station Rules
 Using these rules, you may discard up to two cards, but no more than two.  The combination of cards to have is four Flasks, either numbered or ranked.  This is called a Temporal Array.  Face card values are listed below.
-•	Rancor=7
-•	Jedi Knight=8
-•	Jedi Master=-6
-•	Dark Jedi=5
-•	Lord of the Sith=4
-•	Smuggler=6
-•	Bounty Hunter=6
+*	Rancor=7
+*	Jedi Knight=8
+*	Jedi Master=-6
+*	Dark Jedi=5
+*	Lord of the Sith=4
+*	Smuggler=6
+*	Bounty Hunter=6
 ### Scoring
 At the end of a hand of Sabacc, your score for that hand is the same as your hand’s value.  If your total is over 46, then you subtract 46 from your total, and subtract the difference from your score.  (ex.  Your hand totals 48; 48-46=2, so you subtract 2 from your cumulative score).  If you get an Idiot’s Array or another Array, then your score for that hand is 23.  If you win the hand, you get a 10 point bonus added to your score.  
 
